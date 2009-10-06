@@ -1,0 +1,6 @@
+Revision history for Perl extension Sort::Key::IPv4.
+
+0.01  Wed May 16 23:36:56 2007
+	- original version; created by h2xs 1.23 with options
+		-An Sort::Key::IPv4
+
