@@ -33,11 +33,10 @@ use Sort::Key::Maker ripv4sort => \&ipv4_to_uv, '-uint';
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-Sort::Key::IPv4 - sort IPv4 addresses
+Sort::Key::IPv4 - sort IP v4 addresses
 
 =head1 SYNOPSIS
 
@@ -53,8 +52,8 @@ Sort::Key::IPv4 - sort IPv4 addresses
 
 =head1 DESCRIPTION
 
-This module extends the L<Key::Sort> family of modules to support
-sorting of IPv4 addresses.
+This module extends the L<Sort::Key> family of modules to support
+sorting of IP v4 addresses.
 
 IPv4 addresses have to match the regular expression
 C</^(\d)+\.(\d)+\.(\d)+\.(\d)+$/>.
