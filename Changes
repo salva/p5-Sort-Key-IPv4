@@ -1,5 +1,8 @@
 Revision history for Perl extension Sort::Key::IPv4.
 
+0.03
+	- generate META.yml on the fly when making dist
+
 0.02  Oct 7, 2009
         - more robust and strict conversion of IP v4 strings to integers
 	- some minor doc corrections
