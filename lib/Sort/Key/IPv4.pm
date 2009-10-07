@@ -104,6 +104,14 @@ converts the IPv4 value to a 32 bits unsigned integer.
 
 L<Sort::Key>, L<Sort::Key::Maker>
 
+=head1 BUGS AND SUPPORT
+
+Report bugs by email or using the CPAN RT system at
+L<http://rt.cpan.org/>.
+
+This module is hosted at GitHub:
+L<http://github.com/salva/p5-Sort-Key-IPv4>.
+
 =head1 COPYRIGHT AND LICENSE
 
 Copyright E<copy> 2007, 2009 by Salvador FandiE<ntilde>o,
@@ -112,6 +120,5 @@ E<lt>sfandino@yahoo.comE<gt>.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
 at your option, any later version of Perl 5 you may have available.
-
 
 =cut
