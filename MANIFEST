@@ -7,4 +7,3 @@ README
 t/Sort-Key-IPv4.t
 t/pods.t
 lib/Sort/Key/IPv4.pm
-META.yml                                 Module meta-data (added by MakeMaker)
