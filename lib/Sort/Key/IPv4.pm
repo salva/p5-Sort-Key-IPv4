@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 BEGIN {
-    our $VERSION = '0.01';
+    our $VERSION = '0.02';
 
     require XSLoader;
     XSLoader::load('Sort::Key::IPv4', $VERSION);
@@ -106,7 +106,7 @@ L<Sort::Key>, L<Sort::Key::Maker>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2007 by Salvador FandiE<ntilde>o,
+Copyright E<copy> 2007, 2009 by Salvador FandiE<ntilde>o,
 E<lt>sfandino@yahoo.comE<gt>.
 
 This library is free software; you can redistribute it and/or modify
