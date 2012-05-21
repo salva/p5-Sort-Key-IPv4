@@ -21,15 +21,36 @@ our @EXPORT_OK = qw( ipv4keysort
                      ipv4sort_inplace
                      ripv4sort
                      ripv4sort_inplace
+
+                     netipv4keysort
+                     netipv4keysort_inplace
+                     rnetipv4keysort
+                     rnetipv4keysort_inplace
+                     netipv4sort
+                     netipv4sort_inplace
+                     rnetipv4sort
+                     rnetipv4sort_inplace
+
+                     pack_ipv4
+                     pack_netipv4
                      ipv4_to_uv);
 
 
-use Sort::Key::Register ipv4 => \&ipv4_to_uv, 'uint';
+use Sort::Key::Register ipv4 => \&pack_ipv4, 'uint';
+use Sort::Key::Register netipv4 => \&pack_netipv4, 'uint', 'uint';
 
 use Sort::Key::Maker ipv4keysort => 'ipv4';
 use Sort::Key::Maker ripv4keysort => '-ipv4';
-use Sort::Key::Maker ipv4sort => \&ipv4_to_uv, 'uint';
-use Sort::Key::Maker ripv4sort => \&ipv4_to_uv, '-uint';
+use Sort::Key::Maker ipv4sort => \&pack_ipv4, 'uint';
+use Sort::Key::Maker ripv4sort => \&pack_ipv4, '-uint';
+
+use Sort::Key::Maker netipv4keysort => 'netipv4';
+use Sort::Key::Maker rnetipv4keysort => '-netipv4';
+use Sort::Key::Maker netipv4sort => \&pack_netipv4, 'uint', 'uint';
+use Sort::Key::Maker netripv4sort => \&pack_netipv4, '-uint', '-uint';
+
+*ipv4_to_uv = \&pack_ipv4;
+
 
 1;
 __END__
@@ -53,10 +74,13 @@ Sort::Key::IPv4 - sort IP v4 addresses
 =head1 DESCRIPTION
 
 This module extends the L<Sort::Key> family of modules to support
-sorting of IP v4 addresses.
+sorting of IP v4 addresses and networks.
 
 IPv4 addresses have to match the regular expression
-C</^(\d)+\.(\d)+\.(\d)+\.(\d)+$/>.
+C</^\d+\.\d+\.\d+\.\d+$/>. For instance C<192.168.20.102>.
+
+IPv4 networks have to match the regular expression
+C</^\d+\.\d+\.\d+\.\d+\/\d+$/>. For instance C<10.2.4.0/24>.
 
 =head2 FUNCTIONS
 
@@ -94,9 +118,34 @@ these functions are similar respectively to C<ipv4sort>, C<ripv4sort>,
 C<ipv4sortkey> and C<ripv4sortkey>, but they sort the array C<@data> in
 place.
 
-=item ipv4_to_uv $key
+=item netipv4sort @data
+
+=item rnetipv4sort @data
+
+=item netipv4keysort { CALC_KEY($_) } @data
+
+=item rnetipv4keysort { CALC_KEY($_) } @data
+
+=item netipv4sort_inplace @data
+
+=item rnetipv4sort_inplace @data
+
+=item netipv4keysort_inplace { CALC_KEY($_) } @data
+
+=item rnetipv4keysort_inplace { CALC_KEY($_) } @data
+
+These functions sort network addreses (composed by an IP and a network
+length pair with and slash separatin them).
+
+=item pack_ipv4 $key
 
 converts the IPv4 value to a 32 bits unsigned integer.
+
+=item pack_netipv4 $key
+
+converts an string of the format "xxx.xxx.xxx.xxx/xxx" into two 32 bit
+unsigned numbers, the first representing the IP address and the second
+the network mask.
 
 =back
 
@@ -114,7 +163,7 @@ L<http://github.com/salva/p5-Sort-Key-IPv4>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright E<copy> 2007, 2009 by Salvador FandiE<ntilde>o,
+Copyright E<copy> 2007, 2009, 2012 by Salvador FandiE<ntilde>o,
 E<lt>sfandino@yahoo.comE<gt>.
 
 This library is free software; you can redistribute it and/or modify

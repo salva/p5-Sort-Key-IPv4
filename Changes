@@ -1,6 +1,8 @@
 Revision history for Perl extension Sort::Key::IPv4.
 
-0.03
+0.03  May 21, 2012
+        - add support for sorting network addreses
+        - rename ipv4_to_uv as pack_ipv4
 	- generate META.yml on the fly when making dist
 
 0.02  Oct 7, 2009
